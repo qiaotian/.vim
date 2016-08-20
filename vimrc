@@ -270,3 +270,20 @@ if has("gui_running")
     map <D-9> 9gt
     map <D-0> :tablast<CR>
 endif
+
+
+" for add file header 
+function HeaderPython()
+    call setline(1, "#! /usr/bin/env python")
+    call append(1, "# -*- coding: utf-8 -*-")
+    call append(2, "")
+    call append(3, "# Filename @  " . expand("%:t"))
+    call append(4, "# Author   @  Tian")
+    call append(5, "# Date     @  " . strftime('%Y-%m-%d %T', localtime()))
+	call append(6, "# Email    @  qiaotian@me.com")
+    normal G
+    normal o
+    normal o
+endf
+
+autocmd bufnewfile *.py call HeaderPython()
