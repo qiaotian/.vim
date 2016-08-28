@@ -36,7 +36,7 @@ set backspace=indent,eol,start                                    " More powerfu
 set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors "
 set mouse=a                                                       " use mouse in all modes
 set report=0                                                      " always report number of lines changed                "
-set wrap                                                        " dont wrap lines
+set wrap                                                          " dont wrap lines
 set scrolloff=5                                                   " 5 lines above/below cursor when scrolling
 set number                                                        " show line numbers
 set showmatch                                                     " show matching bracket (briefly jump)
@@ -57,6 +57,16 @@ set textwidth=0
 " set smarttab
 set expandtab       " expand tab to space
 set pastetoggle=<F2>
+
+" set fold 
+set foldenable              " 开始折叠
+set foldmethod=syntax       " 设置语法折叠
+set foldcolumn=0            " 设置折叠区域的宽度
+setlocal foldlevel=1        " 设置折叠层数为
+set foldlevelstart=99       " 打开文件是默认不折叠代码
+"set foldclose=all          " 设置为自动关闭折叠 
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+                            " 用空格键来开关折叠
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
